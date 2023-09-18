@@ -15,12 +15,15 @@ export class RideRequestService {
     return rideRequest;
   }
   async acceptRideRequest(rideId: string, driverId: string) {
+    // make sure ride has not been accepted by another driver
     const checkRide = await this.rideModel.findById(rideId);
     if (checkRide && checkRide.status === 'accepted') {
       throw new Error(
         'sorry another driver has already accepted the ride please try another ride',
       );
     }
+    // make sure driver has no ongoing trip
+
     const checkDriver = await this.rideModel.findOne({
       driverId,
       status: 'accepted',
