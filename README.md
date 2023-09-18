@@ -24,14 +24,13 @@ cd ride-sharing
  | Variable | Type | Description |
 | --- | --- | --- |
 | `PORT` | int | API key for making requests to the backend |
-| `ETH_QUERY_RATE` | number | rate for querying blockchain in seconds|
 | `MONGO_URI` | string | connect URI to your mongo instance |
 | `SECRET_KEY` | string | key used to sign JWT tokens |
 
 
 *Example*
 ```
-SECRET_KEY=371687a8-8006-4987-bbcf-29d41c56695b
+SECRET_KEY=awesome long key
 ```
 
 
@@ -47,6 +46,9 @@ npm run start
 ```
 
 7- Api Documentation
-## this API is well documentation using Post man - please find an online copy of the documentation [here](https://documenter.getpostman.com/view/17983518/2s9YC7UCBi#68fd01c9-a606-4631-8138-53a525edaa55)
+ this API is well documentation using Post man - please find an online copy of the documentation [here](https://documenter.getpostman.com/view/17983518/2s9YC7UCBi#68fd01c9-a606-4631-8138-53a525edaa55)
+
+8- Api Hosting
+ this API has been hosted on a dedicated so if you want to save yourself the hustle of hosting and running the app see  [here](https://ride-sharing.onrender.com)
 
 # End
