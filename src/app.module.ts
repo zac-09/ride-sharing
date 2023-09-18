@@ -5,8 +5,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose/dist/mongoose.module';
-import { RideRequestService } from './ride-request/ride-request.service';
-import { RideRequestController } from './ride-request/ride-request.controller';
+
 import { RideRequestModule } from './ride-request/ride-request.module';
 @Module({
   imports: [
@@ -16,7 +15,7 @@ import { RideRequestModule } from './ride-request/ride-request.module';
     AuthModule,
     RideRequestModule,
   ],
-  controllers: [AppController, RideRequestController],
-  providers: [AppService, RideRequestService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

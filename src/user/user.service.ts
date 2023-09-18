@@ -27,7 +27,32 @@ export class UserService {
     const { email } = payload;
     return await this.userModel.findOne({ email });
   }
-
+  async markAvailable(userId: string) {
+    const rideRequest = await this.userModel.findByIdAndUpdate(
+      userId,
+      {
+        status: 'available',
+      },
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+    return rideRequest;
+  }
+  async markUnavailable(userId: string) {
+    const rideRequest = await this.userModel.findByIdAndUpdate(
+      userId,
+      {
+        status: 'unavailable',
+      },
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+    return rideRequest;
+  }
   async findByLogin(UserDTO: LoginDTO) {
     const { email, password } = UserDTO;
     const user = await this.userModel.findOne({ email });

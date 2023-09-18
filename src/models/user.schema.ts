@@ -9,6 +9,7 @@ export const UserSchema = new mongoose.Schema({
   },
   password: { type: String, required: [true, 'User must provide a password'] },
   name: { type: String, required: [true, 'User must provide a name'] },
+  status: { type: String, enum: ['available', 'unavailable'] },
   phoneNumber: {
     type: String,
     required: [true, 'User must provide a phoneNumber'],

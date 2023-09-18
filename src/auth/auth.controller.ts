@@ -6,6 +6,8 @@ import {
   UseGuards,
   HttpException,
   HttpStatus,
+  Req,
+  Res,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport/dist/auth.guard';
 import { RegisterDTO } from 'src/user/register.dto';
@@ -20,14 +22,23 @@ export class AuthController {
     private authService: AuthService,
   ) {}
 
-  @Get('/onlyauth')
+  @Get('/me')
   @UseGuards(AuthGuard('jwt'))
-  async hiddenInformation() {
-    return 'hidden information';
+  async getMyProfile(@Req() req: any) {
+    const user = req.user;
+    return user;
   }
-  @Get('/anyone')
-  async publicInformation() {
-    return 'this can be seen by anyone';
+  @Post('/markAvailable')
+  @UseGuards(AuthGuard('jwt'))
+  async markAvailable(@Req() req: any, @Res() res: any) {
+    const user = await this.userService.markAvailable(req.user._id);
+    res.status(200).json(user);
+  }
+  @Post('/markUnavailable')
+  @UseGuards(AuthGuard('jwt'))
+  async markUnavailable(@Req() req: any, @Res() res: any) {
+    const user = await this.userService.markUnavailable(req.user._id);
+    res.status(200).json(user);
   }
 
   @Post('register')

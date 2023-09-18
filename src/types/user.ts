@@ -6,4 +6,5 @@ export interface User extends Document {
   role: string;
   name: string;
   phoneNumber: string;
+  _id: string;
 }

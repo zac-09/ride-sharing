@@ -10,6 +10,7 @@ export const RideRequestSchema = new mongoose.Schema({
   clientId: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
+    required: true,
   },
   driverId: {
     type: mongoose.Schema.ObjectId,
